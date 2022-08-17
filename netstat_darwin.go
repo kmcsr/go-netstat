@@ -81,12 +81,12 @@ func doLsofCmd(cb func(e lsofEntry))(err error){
 		addrs := strings.SplitN(cols[8], "->", 2)
 		e.local, err = parseAddr(addrs[0])
 		if err != nil {
-			return
+			continue
 		}
 		if len(addrs) >= 2 {
 			e.remote, err = parseAddr(addrs[1])
-			if err != nil {
-				return
+			if err == nil {
+				continue
 			}
 		}
 		switch cols[9] {
@@ -103,7 +103,7 @@ func doLsofCmd(cb func(e lsofEntry))(err error){
 		}
 		cb(e)
 	}
-	return
+	return nil
 }
 
 func parseAddr(str string)(addr *SockAddr, err error){
