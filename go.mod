@@ -1,3 +1,3 @@
-module github.com/cakturk/go-netstat
+module github.com/kmcsr/go-netstat
 
 go 1.13
