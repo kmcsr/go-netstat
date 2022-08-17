@@ -71,10 +71,11 @@ func doLsofCmd(cb func(e lsofEntry))(err error){
 		if err != nil {
 			return
 		}
-		e.uid, err = strconv.Atoi(cols[2])
-		if err != nil {
-			return
-		}
+		// TODO user name to uid
+		// e.uid, err = strconv.Atoi(cols[2])
+		// if err != nil {
+		// 	return
+		// }
 		e.typ = cols[4]
 		e.node = cols[7]
 		addrs := strings.SplitN(cols[8], "->", 2)
